@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Login extends CI_Controller {
 
 	public function __construct()
 	{
@@ -38,13 +38,14 @@ class Auth extends CI_Controller {
 				redirect('welcome');
 	 
 			}else{
-				echo "Username dan password salah !";
+				$this->session->set_flashdata('error', 'username dan password salah');
+				redirect('login');
 			}
 		}
 	 
 		function logout(){
 			$this->session->sess_destroy();
-			redirect('auth');
+			redirect('login');
 		}
 	}
 
